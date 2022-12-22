@@ -1,0 +1,23 @@
+body {
+    color: #222;
+    -webkit-transition: background-color 800ms ease;
+    transition: background-color 800ms ease;
+  }
+  
+  body.dark {
+    background-color: #222;
+    color: #fff;
+  }
+  
+  
+  /* more dark mode styles here */
+  .dark-button {
+    width: 40px;
+    background: transparent;
+    border: none;
+  }
+  .light-button {
+    width: 40px;
+    background: transparent;
+    border: none;
+  }
