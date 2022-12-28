@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+<div class="d-flex flex-column justify-content-center  align-items-center mt-5 p-5 flex-wrap">
+    <div class="d-flex flex-column align-items-center mb-3">
+        <img src="{% static 'img/favicon.ico' %}" alt="" width="100">
+        <h2>Conecte-se</h2>
+        <p>Faça seu login e comece já a fazer suas apostas!</p>
+    </div>
+    <form method="POST" style="width: 579.25px;">
+        {% csrf_token %}
+
+        <div class="form-floating mb-3 text-dark">
+            {% render_field form.username type='email' class="form-control " id='floatingInput' placeholder="name@example.com" %}
+            <label for="floatingInput">E-mail</label>
+        </div>
+
+        <div class="form-floating mb-3 text-dark">
+            {% render_field form.password type='password' class="form-control " id='floatingInput' placeholder="***********" %}
+            <label for="floatingInput">Senha</label>
+        </div>
+
+        <button type="submit" onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="form-control btn" style="background-color: #D6FF00;">Conectar-se</button>
+
+    </form>
+
+    <div class="mt-3">
+        <a href="{% url 'signup' %}">Ainda não possui uma conta? Faça uma agora!</a>
+    </div>
+
+</div>
+
+
+
+{% endblock %}
