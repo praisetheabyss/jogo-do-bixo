@@ -1,23 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jogo do Bixo</title>
-  
-</head>
-
-<body class="">
-
   {% extends "base.html" %}
   {% load static %}
 
   {% block content %}
 
   {% if user.is_authenticated %}
-    <div class="d-flex flex-column justify-content-center  align-items-center mt-5 p-5 flex-wrap">
+    <div class="d-flex flex-column justify-content-center  align-items-center mt-5 p-5 flex-wrap text-dark">
       <div class="card text-center w-75" >
         <div class="card-header">
           Noticias
@@ -40,13 +27,15 @@
         <h1>Jogo do Bixo</h1>
         <h2>Faça suas apostas do bixo no nosso site e ganhe muito!</h2>
         <p>O nosso jogo do bixo é jogado de maneira diferente do tradicional!</p>
-        <div class="d-flex justify-content-end align-self-end">
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque, delectus soluta. Ad modi sunt doloribus odio doloremque illum a unde corrupti quia est! Facere veritatis dolorem iure fugit explicabo dolorum!</p>
-          <div style="height: fit-content;"><img src="{% static 'img/razinha.png' %}" alt="" width="150"></div>
+        <div class="d-block justify-content-end align-self-end">
+          <img align="right" src="{% static 'img/razinha.png' %}" alt="" width="150">
+
+          <p><span style="color: #DE627D;font-weight: bolder;">Como funciona:</span> você pode apostar em até cinco dos 25 animais presentes no jogo do bicho ao invés dos tradicionais 100 números dividos em grupos de animais, fazendo que assim você possua mais chances de ganhar. Todos os dias as 12:00 da manhã será realizado o sorteio do bicho.</p>
+          <div style="height: fit-content;"></div>
         </div>
       </div>
 
-      <div class="card">
+      <div class="card mt-5">
         <div class="card-header text-dark">
           Quote
         </div>
@@ -64,10 +53,10 @@
   {% endif %}
 
 
-  <div class="d-flex flex-column align-items-center text-dark">
-    <h2>Faça suas apostas:</h2>
-    <div class="d-flex gap-3 flex-wrap justify-content-center mt-3">
-      <div class="card" style="width: 18rem;">
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <h2>Comece a apostar:</h2>
+    <div class="d-flex gap-5 flex-wrap justify-content-center mt-3 w-75">
+      <div class="card text-dark" style="width: 18rem;">
         <img src="{% static 'img/razinha.png' %}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Grupo</h5>
@@ -75,7 +64,7 @@
           <a href="#" class="btn btn-primary">Aposte</a>
         </div>
       </div>
-      <div class="card" style="width: 18rem;">
+      <div class="card text-dark" style="width: 18rem;">
         <img src="{% static 'img/razinha.png' %}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Duque</h5>
@@ -83,7 +72,7 @@
           <a href="#" class="btn btn-primary">Aposte</a>
         </div>
       </div>
-      <div class="card" style="width: 18rem;">
+      <div class="card text-dark" style="width: 18rem;">
         <img src="{% static 'img/razinha.png' %}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Terno</h5>
@@ -91,7 +80,7 @@
           <a href="#" class="btn btn-primary">Aposte</a>
         </div>
       </div>
-      <div class="card" style="width: 18rem;">
+      <div class="card text-dark" style="width: 18rem;">
         <img src="{% static 'img/razinha.png' %}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Quadra</h5>
@@ -99,7 +88,7 @@
           <a href="#" class="btn btn-primary">Aposte</a>
         </div>
       </div>
-      <div class="card" style="width: 18rem;">
+      <div class="card text-dark" style="width: 18rem;">
         <img src="{% static 'img/razinha.png' %}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Quina</h5>
@@ -113,6 +102,3 @@
 
 
   {% endblock content %}
-</body>
-
-</html>
