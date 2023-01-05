@@ -19,7 +19,7 @@
 <body>
   <nav class="navbar navbar-expand-lg" style="background-color: #D6FF00;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="{% url 'home' %}">
         <img src="{% static 'img/vaquinha.png' %}" alt="" width="80">
         <span class="fs-6">Bicheiro Online</span>
       </a>
@@ -29,8 +29,15 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
           <li class="nav-item ">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
           </li>
+          {% if user.is_authenticated %}
+            {% if user.is_staff %}
+            <li class="nav-item">
+              <a class="nav-link" href="/sorteio">Sortear</a>
+            </li>
+            
+            {% else %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Apostar
@@ -48,7 +55,7 @@
               <li><a class="dropdown-item" href="#">Ver suas apostas</a></li>
             </ul>
           </li>
-          {% if user.is_authenticated %}
+          {% endif %}
           <li class="nav-item">
             <a class="nav-link" href="/logout">Logout</a>
           </li>
@@ -58,7 +65,7 @@
             <img src="{% static 'img/razinha.png' %}" alt="" width="40">
            Olá, {{ user.first_name }}! </a>
         </div>
-        
+          
         </li>
         {% else %}
         <li class="nav-item">
@@ -97,6 +104,7 @@
   </footer>
 
 
+  <script src="{% static 'js/sorteio.js' %}"></script>
   <script src="{% static 'js/jquery-3.6.3.min.js' %}"></script>
   <script src="{% static 'js/dark-mode.js' %}"></script>
 

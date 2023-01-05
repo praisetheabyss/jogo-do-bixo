@@ -23,5 +23,5 @@ urlpatterns = [
     path('accounts/', include('bixoapp.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path("logout", logout_request, name= "logout"),
-    
+    path('sorteio/', sorteio)
 ]

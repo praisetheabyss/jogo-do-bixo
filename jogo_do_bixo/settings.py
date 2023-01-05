@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-da0=rl$-ej!(@ygocxgthfqfps4i6hyc9l+-vp#7h=o6_kyqd#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', 'localhost']
 
 
 # Application definition
@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'jogo_do_bixo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'bicheiro.sqlite3',
     }
 }
 

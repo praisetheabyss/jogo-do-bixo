@@ -11,11 +11,11 @@
         <h2>Conecte-se</h2>
         <p>Faça seu login e comece já a fazer suas apostas!</p>
     </div>
-    <form method="POST" style="width: 579.25px;">
+    <form class="" method="POST" style="width: 559px; max-width: 100%;">
         {% csrf_token %}
 
         <div class="form-floating mb-3 text-dark">
-            {% render_field form.username type='email' class="form-control " id='floatingInput' placeholder="name@example.com" %}
+            {% render_field form.username type='email' class="form-control" id='floatingInput' placeholder="name@example.com" %}
             <label for="floatingInput">E-mail</label>
         </div>
 

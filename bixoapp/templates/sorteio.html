@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="d-flex flex-column justify-content-center  align-self-center mt-5 p-5 flex-wrap">
+    <div class="d-flex flex-column align-items-center">
+        <h2 style="color: #DE627D;">Atenção!</h2>
+        <h4>
+            <ul style="color: #DE627D;">
+                <li>O sorteio só deve ser realizado 4 vezes por dia!</li>
+                <li>Para sortear o número você deve apertar no botão 'Sortear'.</li>
+                <li>O input será preenchido com o número que foi sorteado.</li>
+                <li>Agora você deve clicar em 'Registrar sorteio'</li>
+
+            </ul>
+        </h4>
+    </div>
+    <div class="d-flex flex-column gap-3 align-items-start align-self-center">
+        <h1>Fazer sorteio</h1>
+
+        <button type="submit" onclick="sorteio()" onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="form-control btn" style="background-color: #D6FF00;">Sortear</button>
+
+
+        <form method="POST" class="d-flex flex-column gap-3" style="width: 247.55px;">
+            {% csrf_token %}
+
+            <div class="form-floating mb-3 text-dark w-100">
+                {% render_field form.num_sorteado type='number' class="form-control" id='sorteio'  %}
+                <label for="floatingInput">Número sorteado</label>
+            </div>
+
+            <button type="submit" onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="form-control btn" style="background-color: #D6FF00;">Registrar sorteio</button>
+
+        </form>
+
+    </div>
+</div>
+
+
+
+{% endblock content %}
