@@ -9,14 +9,14 @@
 <div class="d-flex flex-column justify-content-center  align-items-center p-5 flex-wrap">
   <img src="{% static 'img/cobrinha.png' %}" width='200'alt="">
 
-  <div class="w-25 mt-2 text-center">
+  <div class="mt-2 text-center" style="width: 350px;">
     {% for frase in random_obj %}
     <p>
       {{ frase.texto }}
     </p>
     {% endfor %}
   </div>
-  <div class="card text-center w-50 mt-3 text-dark">
+  <div class="card text-center mt-3 text-dark" style="width: 850px; max-width: 100%;">
     <div class="card-header">
       Sorteios
     </div>
@@ -57,7 +57,6 @@
           <li>Só é possivel apostar <span style="color: #DE627D;font-weight: bolder;">uma vez</span> por dia em cada categoria.</li>
 
         </ul>
-        <div style="height: fit-content;"></div>
       </div>
     </div>
   </div>
@@ -82,44 +81,44 @@
   <h2>Comece a apostar:</h2>
   <div class="d-flex gap-5 flex-wrap justify-content-center align-items-center mt-3 w-75">
     
-    <div class="card text-dark" style="width: 18rem;height: fit-content;">
-      <img src="{% static 'img/cavalo.png' %}" class="card-img-top" alt="...">
+    <div class="card text-dark" style="width: 18rem; height: 400px;">
+      <img src="{% static 'img/cavalo.png' %}" class="card-img-top" alt="..." height="220">
       <div class="card-body">
         <h5 class="card-title">Grupo</h5>
         <p class="card-text">Nessa categoria você aposta em um só animal.</p>
-        <a href="apostas/quina" onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="form-control btn" style="background-color: #D6FF00;">Aposte</a>
+        <a href="apostas/grupo" onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="form-control btn" style="background-color: #D6FF00;">Aposte</a>
 
       </div>
     </div>
-    <div class="card text-dark" style="width: 18rem; height: fit-content;">
-      <img src="{% static 'img/macaco.png' %}" class="card-img-top" alt="...">
+    <div class="card text-dark" style="width: 18rem; height: 400px;">
+      <img src="{% static 'img/macaco.png' %}" class="card-img-top" alt="..." height="220">
       <div class="card-body">
         <h5 class="card-title">Duque</h5>
         <p class="card-text">Nessa categoria você aposta em dois animais.</p>
-        <a href="apostas/quina" onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="form-control btn" style="background-color: #D6FF00;">Aposte</a>
+        <a href="apostas/duque" onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="form-control btn" style="background-color: #D6FF00;">Aposte</a>
 
       </div>
     </div>
-    <div class="card text-dark" style="width: 18rem; height: fit-content;">
-      <img src="{% static 'img/burrin.png' %}" class="card-img-top" alt="...">
+    <div class="card text-dark" style="width: 18rem; height: 400px;">
+      <img src="{% static 'img/burrin.png' %}" class="card-img-top" alt="..." height="220">
       <div class="card-body">
         <h5 class="card-title">Terno</h5>
         <p class="card-text">Nessa categoria você aposta em três animais.</p>
-        <a href="apostas/quina" onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="form-control btn" style="background-color: #D6FF00;">Aposte</a>
+        <a href="apostas/terno" onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="form-control btn" style="background-color: #D6FF00;">Aposte</a>
 
       </div>
     </div>
-    <div class="card text-dark" style="width: 18rem; height: fit-content;">
-      <img src="{% static 'img/jare.png' %}" class="card-img-top" alt="...">
+    <div class="card text-dark" style="width: 18rem; height: 400px;">
+      <img src="{% static 'img/jare.png' %}" class="card-img-top" alt="..." height="220">
       <div class="card-body">
         <h5 class="card-title">Quadra</h5>
         <p class="card-text">Nessa categoria você aposta em quatro animais.</p>
-        <a href="apostas/quina" onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="form-control btn" style="background-color: #D6FF00;">Aposte</a>
+        <a href="apostas/quadra" onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="form-control btn" style="background-color: #D6FF00;">Aposte</a>
 
       </div>
     </div>
-    <div class="card text-dark" style="width: 18rem; height: fit-content;">
-      <img src="{% static 'img/elefant.png' %}" class="card-img-top" alt="...">
+    <div class="card text-dark" style="width: 18rem; height: 400px;">
+      <img src="{% static 'img/elefant.png' %}" class="card-img-top" alt="..." height="220">
       <div class="card-body">
         <h5 class="card-title">Quina</h5>
         <p class="card-text">Nessa categoria você aposta em cinco animais.</p>
