@@ -23,5 +23,13 @@ urlpatterns = [
     path('accounts/', include('bixoapp.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path("logout", logout_request, name= "logout"),
-    path('sorteio/', sorteio)
+    path('sorteio/', sorteio),
+    path('apostas/grupo/', apostasGrupo, name='grupo'),
+    path('apostas/duque/', apostasDuque, name='duque'),
+    path('apostas/terno/', apostasTerno, name='terno'),
+    path('apostas/quadra/', apostasQuadra, name='quadra'),
+    path('apostas/quina/', apostasQuina, name='quina'),
+    path('apostas/resultado/', resultado, name='resultado'),
+
+
 ]

@@ -1,0 +1,202 @@
+[
+    {
+      "model": "bixoapp.animais",
+      "pk": 1,
+      "fields": {
+        "nome": "Avestruz",
+        "numero": 1
+      }
+    },
+    {
+      "model": "bixoapp.animais",
+      "pk": 2,
+      "fields": {
+        "nome": "Águia",
+        "numero": 2
+      }
+    },
+    {
+      "model": "bixoapp.animais",
+      "pk": 3,
+      "fields": {
+        "nome": "Burro",
+        "numero": 3
+      }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 4,
+        "fields": {
+          "nome": "Borboleta",
+          "numero": 4
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 5,
+        "fields": {
+          "nome": "Cachorro",
+          "numero": 5
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 6,
+        "fields": {
+          "nome": "Cabra",
+          "numero": 6
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 7,
+        "fields": {
+          "nome": "Carneiro",
+          "numero": 7
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 8,
+        "fields": {
+          "nome": "Camelo",
+          "numero": 8
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 9,
+        "fields": {
+          "nome": "Cobra",
+          "numero": 9
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 10,
+        "fields": {
+          "nome": "Coelho",
+          "numero": 10
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 11,
+        "fields": {
+          "nome": "Cavalo",
+          "numero": 11
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 12,
+        "fields": {
+          "nome": "Elefante",
+          "numero": 12
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 13,
+        "fields": {
+          "nome": "Galo",
+          "numero": 13
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 14,
+        "fields": {
+          "nome": "Gato",
+          "numero": 14
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 15,
+        "fields": {
+          "nome": "Jacaré",
+          "numero": 15
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 16,
+        "fields": {
+          "nome": "Leão",
+          "numero": 16
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 17,
+        "fields": {
+          "nome": "Macaco",
+          "numero": 17
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 18,
+        "fields": {
+          "nome": "Porco",
+          "numero": 18
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 19,
+        "fields": {
+          "nome": "Pavão",
+          "numero": 19
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 20,
+        "fields": {
+          "nome": "Peru",
+          "numero": 20
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 21,
+        "fields": {
+          "nome": "Touro",
+          "numero": 21
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 22,
+        "fields": {
+          "nome": "Tigre",
+          "numero": 22
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 23,
+        "fields": {
+          "nome": "Urso",
+          "numero": 23
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 24,
+        "fields": {
+          "nome": "Veado",
+          "numero": 24
+        }
+    },
+    {
+        "model": "bixoapp.animais",
+        "pk": 25,
+        "fields": {
+          "nome": "Vaca",
+          "numero": 25
+        }
+    }
+  ]

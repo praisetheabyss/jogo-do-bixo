@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-sm mt-5 d-flex justify-content-center">
+    <img src="{% static 'img/cobrinha.png' %}" width="200" alt="">
+    <div style="width: 350px;">
+        <h4>Parece que você está atrasado!</h4>
+        <p>
+            As apostas são fechadas as 12:00. Você só pode apostar até esse horário. Espere até amanhã para poder apostar de novo.
+        </p>
+    </div>
+</div>
+<div class="container-sm d-flex justify-content-center mt-2">
+    <a href="/">Voltar para página principal.</a>
+</div>
+
+{% endblock %}

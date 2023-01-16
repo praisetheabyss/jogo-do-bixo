@@ -1,137 +1,134 @@
-  {% extends "base.html" %}
-  {% load static %}
+{% extends "base.html" %}
+{% load static %}
 
-  {% block content %}
 
-  {% if user.is_authenticated %}
-    <div class="d-flex flex-column justify-content-center  align-items-center mt-5 p-5 flex-wrap text-dark">
-      <div class="card text-center w-75" >
-        <div class="card-header">
-          Noticias
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Últimos animais sorteados:</h5>
-          <p class="card-text">Vaca, gato, tigre, urso.</p>
-          <a href="#" class="btn btn-primary">Ver seu resultado</a>
-        </div>
-        <div class="card-footer text-muted">
-          2 days ago
-        </div>
-      </div>
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class="d-flex flex-column justify-content-center  align-items-center p-5 flex-wrap">
+  <img src="{% static 'img/cobrinha.png' %}" width='200'alt="">
+
+  <div class="w-25 mt-2 text-center">
+    {% for frase in random_obj %}
+    <p>
+      {{ frase.texto }}
+    </p>
+    {% endfor %}
+  </div>
+  <div class="card text-center w-50 mt-3 text-dark">
+    <div class="card-header">
+      Sorteios
     </div>
+    <div class="card-body">
+      <h5 class="card-title">Animais sorteados do dia:</h5>
+      <ul class="card-text" style="list-style: none;">
+        {% for sorteio in sorteios_list %}
+        
+          {{ sorteio.sorteio_do_dia }} - {{ sorteio.bixo_sorteado }};
+        
+        {% empty %}
+        <li>Ainda não houve sorteios hoje.</li>
 
-  {% else %}
-    <div class="d-flex flex-column justify-content-center  align-items-center mt-5 p-5 flex-wrap">
-    <div class="w-75">
-      <div>
-        <h1>Jogo do Bixo</h1>
-        <h2>Faça suas apostas do bixo no nosso site e ganhe muito!</h2>
-        <p>O nosso jogo do bixo é jogado de maneira diferente do tradicional!</p>
-        <div class="d-block justify-content-end align-self-end">
-          <img align="right" src="{% static 'img/razinha.png' %}" alt="" width="150">
+        {% endfor %}
+      </ul>
 
-          <p><span style="color: #DE627D;font-weight: bolder;">Como funciona:</span> você pode apostar em até cinco dos 25 animais presentes no jogo do bicho ao invés dos tradicionais 100 números dividos em grupos de animais, fazendo que assim você possua mais chances de ganhar. Todos os dias as 12:00 da manhã será realizado o sorteio do bicho.</p>
-          <div style="height: fit-content;"></div>
-        </div>
-      </div>
+      <a href="apostas/resultado" onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="btn" style="background-color: #D6FF00;">Ver seus resultados</a>
 
-      <div class="card mt-5">
-        <div class="card-header text-dark">
-          Quote
-        </div>
-        <div class="card-body">
-          <blockquote class="blockquote mb-0 text-dark">
-            <p>"Então você é a favor da legalização do jogo do bixo?"<br>&#8212 É ilegal?</p>
-            <footer class="blockquote-footer">Pagodinho, Zeca</footer>
-          </blockquote>
-        </div>
-      </div>
-
-      
     </div>
   </div>
-  {% endif %}
+</div>
 
+{% else %}
+<div class="d-flex flex-column justify-content-center  align-items-center mt-5 p-5 flex-wrap">
+  <div class="w-75">
+    <div>
+      <h1>Jogo do Bixo</h1>
+      <h2>Faça suas apostas do bixo no nosso site e ganhe muito!</h2>
+      <p>O nosso jogo do bixo é jogado de maneira diferente do tradicional!</p>
+      <div class="d-block justify-content-end align-self-end">
+        <img align="right" src="{% static 'img/cobrinha.png' %}" alt="" width="150">
 
-  <div class="d-flex flex-column justify-content-center align-items-center">
-    <h2>Comece a apostar:</h2>
-    <div class="d-flex gap-5 flex-wrap justify-content-center mt-3 w-75">
-      <div class="card text-dark" style="width: 18rem;">
-        <img src="{% static 'img/razinha.png' %}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Grupo</h5>
-          <p class="card-text">Nessa categoria você aposta em um só animal.</p>
-          <a href="#" class="btn btn-primary">Aposte</a>
-        </div>
-      </div>
-      <div class="card text-dark" style="width: 18rem;">
-        <img src="{% static 'img/razinha.png' %}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Duque</h5>
-          <p class="card-text">Nessa categoria você aposta em dois animais.</p>
-          <a href="#" class="btn btn-primary">Aposte</a>
-        </div>
-      </div>
-      <div class="card text-dark" style="width: 18rem;">
-        <img src="{% static 'img/razinha.png' %}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Terno</h5>
-          <p class="card-text">Nessa categoria você aposta em três animais.</p>
-          <a href="#" class="btn btn-primary">Aposte</a>
-        </div>
-      </div>
-      <div class="card text-dark" style="width: 18rem;">
-        <img src="{% static 'img/razinha.png' %}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Quadra</h5>
-          <p class="card-text">Nessa categoria você aposta em quatro animais.</p>
-          <a href="#" class="btn btn-primary">Aposte</a>
-        </div>
-      </div>
-      <div class="card text-dark" style="width: 18rem;">
-        <img src="{% static 'img/razinha.png' %}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Quina</h5>
-          <p class="card-text">Nessa categoria você aposta em cinco animais.</p>
-          <div class="modal fade" id="MyModal" aria-hidden="true" aria-labelledby="MyModalLabel" tabindex="-1">
-            <div class="modal-dialog modal-xl modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="MyModalLabel">Quina</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  Escolha os cinco animais para fazer sua aposta:
-                  
-                </div>
-                <div class="modal-footer">
-                  <button class="btn btn-primary" data-bs-target="#MyModal2" data-bs-toggle="modal" data-bs-dismiss="modal">Open second modal</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal fade" id="MyModal2" aria-hidden="true" aria-labelledby="MyModalLabel2" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="MyModalLabel2">Modal 2</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  Hide this modal and show the first with the button below.
-                </div>
-                <div class="modal-footer">
-                  <button class="btn btn-primary" data-bs-target="#MyModal" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a href="#" data-bs-toggle="modal" data-bs-target="#MyModal" class="btn btn-primary">Aposte</a>
-        </div>
+        <p><span style="color: #DE627D;font-weight: bolder;">Como funciona:</span> você pode apostar em até cinco dos 25 animais presentes no jogo do bicho ao invés dos tradicionais 100 números dividos em grupos de animais, fazendo que assim você possua mais chances de ganhar.</p>
+        <ul class=" d-flex flex-column gap-3">
+          <li>Ao apostar em um animal, caso ele seja sorteado, você ganhará 12X por animal acertado independente da categoria na qual você jogou. <span style="color: #DE627D;font-weight: bolder;">Por exemplo:</span> Apostei 10 reais em Avestruz e Gato, só Gato foi sorteado, eu ganharei 12X o que eu apostei nele, nesse exemplo 120 reais. Caso Avestruz também tivesse sido sorteado eu ganharia os 120 que ganhei do Gato e mais 120 do Avestruz, totalizando assim 240 reais.</li>
+          <li>Todos os dias as <span style="color: #DE627D;font-weight: bolder;">12 horas da manhã</span> serão realizados os sorteios de 2 bichos e as <span style="color: #DE627D;font-weight: bolder;">16 horas da tarde</span> serão realizados mais 2.</li>
+          <li>Você só poderá apostar até <span style="color: #DE627D;font-weight: bolder;">antes dos sorteios do dia começarem</span>, às 12 da manhã.</li>
+          <li>Só é possivel apostar <span style="color: #DE627D;font-weight: bolder;">uma vez</span> por dia em cada categoria.</li>
+
+        </ul>
+        <div style="height: fit-content;"></div>
       </div>
     </div>
+  </div>
+</div>
+<div class="container-sm d-flex justify-content-center">
+  <div class="card mb-5 w-75">
+    <div class="card-header text-dark">
+      Quote
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0 text-dark">
+        <p>"Então você é a favor da legalização do jogo do bixo?"<br>&#8212 É ilegal?</p>
+        <footer class="blockquote-footer">Pagodinho, Zeca</footer>
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <h2>Comece a apostar:</h2>
+  <div class="d-flex gap-5 flex-wrap justify-content-center align-items-center mt-3 w-75">
     
+    <div class="card text-dark" style="width: 18rem;height: fit-content;">
+      <img src="{% static 'img/cavalo.png' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Grupo</h5>
+        <p class="card-text">Nessa categoria você aposta em um só animal.</p>
+        <a href="apostas/quina" onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="form-control btn" style="background-color: #D6FF00;">Aposte</a>
+
+      </div>
+    </div>
+    <div class="card text-dark" style="width: 18rem; height: fit-content;">
+      <img src="{% static 'img/macaco.png' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Duque</h5>
+        <p class="card-text">Nessa categoria você aposta em dois animais.</p>
+        <a href="apostas/quina" onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="form-control btn" style="background-color: #D6FF00;">Aposte</a>
+
+      </div>
+    </div>
+    <div class="card text-dark" style="width: 18rem; height: fit-content;">
+      <img src="{% static 'img/burrin.png' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Terno</h5>
+        <p class="card-text">Nessa categoria você aposta em três animais.</p>
+        <a href="apostas/quina" onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="form-control btn" style="background-color: #D6FF00;">Aposte</a>
+
+      </div>
+    </div>
+    <div class="card text-dark" style="width: 18rem; height: fit-content;">
+      <img src="{% static 'img/jare.png' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Quadra</h5>
+        <p class="card-text">Nessa categoria você aposta em quatro animais.</p>
+        <a href="apostas/quina" onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="form-control btn" style="background-color: #D6FF00;">Aposte</a>
+
+      </div>
+    </div>
+    <div class="card text-dark" style="width: 18rem; height: fit-content;">
+      <img src="{% static 'img/elefant.png' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Quina</h5>
+        <p class="card-text">Nessa categoria você aposta em cinco animais.</p>
+        <a href="apostas/quina"  onmouseover="this.style.color='#435000'" onmouseout="this.style.color='';" class="form-control btn" style="background-color: #D6FF00;" >Aposte</a>
+
+
+      </div>
+    </div>
   </div>
+</div>
 
-
-  {% endblock content %}
+{% endblock content %}

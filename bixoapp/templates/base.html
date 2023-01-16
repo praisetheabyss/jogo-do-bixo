@@ -1,3 +1,4 @@
+{% load bootstrap_icons %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +15,13 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="{% static 'css/dark-mode.css' %}">
+  <link rel="stylesheet" href="{% static 'css/multi-select.css' %}">
+  <link rel="stylesheet" href="{% static 'css/back-to-top.css' %}">
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+
+
+
 </head>
 
 <body>
@@ -29,32 +37,71 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
           <li class="nav-item ">
+            {% if request.path == '/' %}
             <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+            {% else %}
+            <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+            {% endif %}
           </li>
           {% if user.is_authenticated %}
-            {% if user.is_staff %}
-            <li class="nav-item">
-              <a class="nav-link" href="/sorteio">Sortear</a>
-            </li>
-            
-            {% else %}
+          <li class="nav-item dropdown">
+            {% if request.path == '/apostas/grupo/' or request.path == '/apostas/duque/' or request.path == '/apostas/terno/' or request.path == '/apostas/quadra/' or request.path == '/apostas/quina/' %}
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Apostar
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'grupo' %}">Grupo</a></li>
+              <li><a class="dropdown-item" href="{% url 'duque' %}">Duque</a></li>
+              <li><a class="dropdown-item" href="{% url 'terno' %}">Terno</a></li>
+              <li><a class="dropdown-item" href="{% url 'quadra' %}">Quadra</a></li>
+              <li><a class="dropdown-item" href="{% url 'quina' %}">Quina</a></li>
+
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/apostas/resultado/">Ver suas apostas</a></li>
+            </ul>
+          </li>
+          {% else %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Apostar
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Grupo</a></li>
-              <li><a class="dropdown-item" href="#">Duque</a></li>
-              <li><a class="dropdown-item" href="#">Terno</a></li>
-              <li><a class="dropdown-item" href="#">Quadra</a></li>
-              <li><a class="dropdown-item" href="#">Quina</a></li>
+              <li><a class="dropdown-item" href="{% url 'grupo' %}">Grupo</a></li>
+              <li><a class="dropdown-item" href="{% url 'duque' %}">Duque</a></li>
+              <li><a class="dropdown-item" href="{% url 'terno' %}">Terno</a></li>
+              <li><a class="dropdown-item" href="{% url 'quadra' %}">Quadra</a></li>
+              <li><a class="dropdown-item" href="{% url 'quina' %}">Quina</a></li>
 
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Ver suas apostas</a></li>
+              <li><a class="dropdown-item" href="/apostas/resultado/">Ver suas apostas</a></li>
             </ul>
           </li>
+          {% endif %}
+          {% if request.path == '/apostas/resultado/' %}
+          <li class="nav-item">
+            <a class="nav-link active" href="/apostas/resultado/">Suas apostas</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/apostas/resultado/">Suas apostas</a>
+          </li>
+          {% endif %}
+          {% if user.is_staff %}
+          {% if request.path == '/sorteio/' %}
+            <li class="nav-item ">
+              <a class="nav-link active" href="/sorteio">Sortear</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/sorteio">Sortear</a>
+            </li>
+          {% endif %}
+
+          {% else %}
           {% endif %}
           <li class="nav-item">
             <a class="nav-link" href="/logout">Logout</a>
@@ -63,9 +110,9 @@
         <div class="mt-2">
           <a class="text-dark nav-link" href="">
             <img src="{% static 'img/razinha.png' %}" alt="" width="40">
-           Olá, {{ user.first_name }}! </a>
+            Olá, {{ user.first_name }}! </a>
         </div>
-          
+
         </li>
         {% else %}
         <li class="nav-item">
@@ -90,6 +137,9 @@
       </div>
     </div>
   </nav>
+  <button type="button" class="btn border bg-light rounded-circle btn-floating btn-lg" id="btn-back-to-top">
+    {% bs_icon 'arrow-up' %}
+  </button>
   {% block content %}
 
   {% endblock content %}
@@ -107,6 +157,20 @@
   <script src="{% static 'js/sorteio.js' %}"></script>
   <script src="{% static 'js/jquery-3.6.3.min.js' %}"></script>
   <script src="{% static 'js/dark-mode.js' %}"></script>
+  <script src="{% static 'js/jquery.multi-select.js' %}"></script>
+  <script src="{% static 'js/select-disable.js' %}"></script>
+  <script src="{% static 'js/back-to-top.js' %}"></script>
+
+
+  <script type="text/javascript">
+    // run pre selected options
+    $('#keep-order').multiSelect()({ keepOrder: true });
+
+  </script>
+  <script type="text/javascript">
+    // run pre selected options
+    $('#pre-selected-options').multiSelect();
+  </script>
 
 
 </body>

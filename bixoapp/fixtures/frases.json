@@ -1,0 +1,44 @@
+[
+    {
+      "model": "bixoapp.randomfrases",
+      "pk": 1,
+      "fields": {
+        "texto": "Se algum conhecido seu ficar te perguntando sobre seus sonhos, suspeite que ele seja na verdade um jogador de jogo do bicho. Comece a pedir 20% dos ganhos!"
+      }
+    },
+    {
+      "model": "bixoapp.randomfrases",
+      "pk": 2,
+      "fields": {
+        "texto": "Definitivamente um dos jogos de azar existentes."
+      }
+    },
+    {
+      "model": "bixoapp.randomfrases",
+      "pk": 3,
+      "fields": {
+        "texto": "No nosso jogo do bicho, ganhar é ainda mais fácil!"
+      }
+    },
+    {
+      "model": "bixoapp.randomfrases",
+      "pk": 4,
+      "fields": {
+        "texto": "No governo do presidente Getúlio Vargas em 1941, foi criado o Decreto-Lei n° 3.688, que tirou da legalidade o jogo tão apreciado ainda naquela época."
+      }
+    },
+    {
+      "model": "bixoapp.randomfrases",
+      "pk": 5,
+      "fields": {
+        "texto": "Desde sua origem no século XIX, a prática do jogo foi coibida pelas autoridades da época."
+      }
+    },
+    {
+      "model": "bixoapp.randomfrases",
+      "pk": 6,
+      "fields": {
+        "texto": "Você sabia que o jogo do bicho foi uma ideia do barão João Batista Drummond para atrair visitantes ao zoológico de Vila Isabel, no Rio de Janeiro?"
+      }
+    }
+  ]

@@ -1,0 +1,353 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load mathfilters %}
+{% block content %}
+<div class="container-sm d-flex flex-column align-items-center mt-5">
+    <img src="{% static 'img/vaquinha.png' %}" width='200' alt="">
+    <div class="d-flex gap-3">
+        <a href="#grupo">Grupo</a>
+        <a href="#duque">Duque</a>
+        <a href="#terno">Terno</a>
+        <a href="#quadra">Quadra</a>
+        <a href="#quina">Quina</a>
+    </div>
+
+    <h1>Bichos sorteados:</h1>
+    {% for sorteio in sorteios_list %}
+    {{ sorteio.bixo_sorteado }};
+    {% empty %}
+    <p>Ainda não houve sorteios hoje.</p>
+    {% endfor %}
+
+</div>
+<div class="d-flex flex-column mt-5 p-5 flex-wrap">
+    <div>
+        <a id="grupo">
+            <h4>Grupo:</h4>
+        </a>
+            <table class="table table-primary">
+                <tr class="border border-dark">
+                    
+    
+                    <th>Sorteio Nº</th>
+                    <th class="border border-dark">Bicho apostado</th>
+                    <th class="border border-dark">Bicho sorteado</th>
+                    <th class="border border-dark">Ganhou/Perdeu</th>
+                    <th class="border border-dark">Valor apostado</th>
+                    <th class="border border-dark">Valor ganhado</th>
+                </tr>
+                {% for aposta in apostas_list %}
+                {% for sorteio in sorteios_list %}
+                {% if aposta.bixo_apostado == sorteio.bixo_sorteado %}
+                <tr>
+                    <td class="border border-dark" style="background-color: #DE627D;">{{ sorteio.sorteio_do_dia }}</td>
+                    <td class="border border-dark" style="background-color: #DE627D;">{{ aposta.bixo_apostado }}</td>
+                    <td class="border border-dark" style="background-color: #DE627D;">{{ sorteio.bixo_sorteado }}</td>
+                    <td class="border border-dark" style="background-color: #DE627D;">Ganhou</td>
+                    <td class="border border-dark" style="background-color: #DE627D;">R$ {{ aposta.valor_apostado }}</td>
+                    <td class="border border-dark" style="background-color: #DE627D;">R$ {{ aposta.valor_apostado | mul:12 }}</td>
+                    {% else %}
+                <tr>
+                    <td class="border border-dark">{{ sorteio.sorteio_do_dia }}</td>
+                    <td class="border border-dark">{{ aposta.bixo_apostado }}</td>
+                    <td class="border border-dark">{{ sorteio.bixo_sorteado }}</td>
+                    <td class="border border-dark">Perdeu</td>
+                    <td class="border border-dark">R$ {{ aposta.valor_apostado }}</td>
+                    <td class="border border-dark">R$ 0.00</td>
+                    {% endif %}
+                    {% empty %}
+                    <div class="mt-3">
+                        <img src="{% static 'img/cobrinha.png' %}" width="35" alt="">
+                        <span class="mt-2" style="color: #DE627D;">Sua aposta foi registrada, porém ainda não foram feitos os sorteios. Aguarde um tempinho.</span>
+                    </div>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+        
+        {% for aposta in apostas_list %}
+        {% empty %}
+        <div class="mb-3">
+            <img src="{% static 'img/cobrinha.png' %}" width="35" alt="">
+            <span style="color: #DE627D;">Você não apostou na categoria grupo hoje.</span>
+        </div>
+        {% endfor %}
+        {% for aposta in apostas_list %}
+        {% for sorteio in sorteios_list %}
+
+        {% if aposta.bixo_apostado == sorteio.bixo_sorteado %}
+        <span style="color: #85de62;">{{ aposta.bixo_apostado }} - {{ sorteio.bixo_sorteado }}</span>;
+        {% else %}
+        <span style="color: #DE627D;">{{ aposta.bixo_apostado }} - {{ sorteio.bixo_sorteado }}</span>;
+        {% endif %}
+
+        {% endfor %}
+        {% endfor %}
+
+    </div>
+
+    <div>
+        
+        <h4 id="duque">Duque:</h4>
+        <table class="table table-info">
+            <tr class="border border-dark">
+                
+                <th class="border border-dark">Sorteio Nº</th>
+                <th>Bichos apostados</th>
+                <th class="border border-dark">Bicho sorteado</th>
+                <th class="border border-dark">Ganhou/Perdeu</th>
+                <th scope="col">Valor apostado</th>
+                <th class="border border-dark">Valor ganhado</th>
+            </tr>
+                {% for aposta in apostas_duque_list %}
+                    {% for sorteio in sorteios_list %}
+            
+                        {% if aposta.primeiro_num_apostado == sorteio.bixo_sorteado or aposta.segundo_num_apostado == sorteio.bixo_sorteado %}
+                            <tr class="border border-dark" style="background-color: #DE627D;">
+                                <td class="border border-dark" style="background-color: #DE627D;">{{ sorteio.sorteio_do_dia }}</td>
+
+                                <td class="border border-dark" style="background-color: #DE627D;">{{ aposta.primeiro_num_apostado }}, {{ aposta.segundo_num_apostado }}</td>
+
+                                <td class="border border-dark" style="background-color: #DE627D;">{{ sorteio.bixo_sorteado }}</td>
+                                <td class="border border-dark" style="background-color: #DE627D;">Ganhou</td>
+                                <td class="border border-dark" style="background-color: #DE627D;">R$ {{ aposta.valor_apostado }}</td>
+                                <td class="border border-dark" style="background-color: #DE627D;">R$ {{ aposta.valor_apostado | mul:12 }}</td>
+
+                        {% else %}
+                            <tr>
+                                <td class="border border-dark">{{ sorteio.sorteio_do_dia }}</td>
+                                <td class="border border-dark">{{ aposta.primeiro_num_apostado }}, {{ aposta.segundo_num_apostado }}</td>
+                                <td class="border border-dark">{{ sorteio.bixo_sorteado }}</td>
+                                <td class="border border-dark">Perdeu</td>
+                                <td class="border border-dark">R$ {{ aposta.valor_apostado }}</td>
+                                <td class="border border-dark">R$ 0.00</td>
+                        {% endif %}
+
+                        {% empty %}
+                        <div class="mt-3">
+                            <img src="{% static 'img/cobrinha.png' %}" width="35" alt="">
+                            <span class="mt-2" style="color: #DE627D;">Sua aposta foi registrada, porém ainda não foram feitos os sorteios. Aguarde um tempinho.</span>
+                        </div>
+                        
+                    {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% for aposta in apostas_duque_list %}
+        {% empty %}
+        <div class="mb-3">
+            <img src="{% static 'img/cobrinha.png' %}" width="35" alt="">
+            <span style="color: #DE627D;">Você não apostou na categoria duque hoje.</span>
+        </div>
+        
+        {% endfor %}
+        {% for aposta in apostas_duque_list %}
+        {% for sorteio in sorteios_list %}
+
+        {% if aposta.primeiro_num_apostado == sorteio.bixo_sorteado or aposta.segundo_num_apostado == sorteio.bixo_sorteado %}
+        <span style="color: #85de62;">{{ aposta.primeiro_num_apostado }}, {{ aposta.segundo_num_apostado }} - {{ sorteio.bixo_sorteado }}</span>;
+        {% else %}
+        <span style="color: #DE627D;">{{ aposta.primeiro_num_apostado }}, {{ aposta.segundo_num_apostado }} - {{ sorteio.bixo_sorteado }}</span>;
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+
+    <div>
+        <h4 id="terno">Terno:</h4>
+        <table class="table table-primary">
+            <tr class="border border-dark">
+                
+                <th class="border border-dark">Sorteio Nº</th>
+                <th>Bichos apostados</th>
+                <th class="border border-dark">Bicho sorteado</th>
+                <th class="border border-dark">Ganhou/Perdeu</th>
+                <th scope="col">Valor apostado</th>
+                <th class="border border-dark">Valor ganhado</th>
+
+            </tr>
+            
+            {% for aposta in apostas_terno_list %}
+            {% for sorteio in sorteios_list %}
+
+            {% if aposta.primeiro_num_apostado == sorteio.bixo_sorteado or aposta.segundo_num_apostado == sorteio.bixo_sorteado or aposta.terceiro_num_apostado == sorteio.bixo_sorteado %}
+            <tr class="border border-dark">
+                <td class="border border-dark" style="background-color: #DE627D;">{{ sorteio.sorteio_do_dia }}</td>
+                <td class="border border-dark" style="background-color: #DE627D;">{{ aposta.primeiro_num_apostado }}, {{ aposta.segundo_num_apostado }}, {{ aposta.terceiro_num_apostado }}</td>
+
+                <td class="border border-dark" style="background-color: #DE627D;">{{ sorteio.bixo_sorteado }}</td>
+                <td class="border border-dark" style="background-color: #DE627D;">Ganhou</td>
+                <td class="border border-dark" style="background-color: #DE627D;">R$ {{ aposta.valor_apostado }}</td>
+                <td class="border border-dark" style="background-color: #DE627D;">R$ {{ aposta.valor_apostado | mul:12 }}</td>
+
+                {% else %}
+            <tr class="border border-dark">
+                <td class="border border-dark">{{ sorteio.sorteio_do_dia }}</td>
+                <td class="border border-dark">{{ aposta.primeiro_num_apostado }}, {{ aposta.segundo_num_apostado }}, {{ aposta.terceiro_num_apostado }}</td>
+
+                <td class="border border-dark">{{ sorteio.bixo_sorteado }}</td>
+                <td class="border border-dark">Perdeu</td>
+                <td class="border border-dark">R$ {{ aposta.valor_apostado }}</td>
+                <td class="border border-dark">R$ 0.00</td>
+                {% endif %}
+
+                {% empty %}
+                <div class="mt-3">
+                    <img src="{% static 'img/cobrinha.png' %}" width="35" alt="">
+                    <span class="mt-2" style="color: #DE627D;">Sua aposta foi registrada, porém ainda não foram feitos os sorteios. Aguarde um tempinho.</span>
+                </div>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% for aposta in apostas_terno_list %}
+        {% empty %}
+        <div class="mb-3">
+            <img src="{% static 'img/cobrinha.png' %}" width="35" alt="">
+            <span style="color: #DE627D;">Você não apostou na categoria terno hoje.</span>
+        </div>
+        {% endfor %}
+        {% for aposta in apostas_terno_list %}
+        {% for sorteio in sorteios_list %}
+
+        {% if aposta.primeiro_num_apostado == sorteio.bixo_sorteado or aposta.segundo_num_apostado == sorteio.bixo_sorteado or aposta.terceiro_num_apostado == sorteio.bixo_sorteado %}
+        <span style="color: #85de62;">{{ aposta.primeiro_num_apostado }}, {{ aposta.segundo_num_apostado }}, {{ aposta.terceiro_num_apostado }} - {{ sorteio.bixo_sorteado }}</span>;
+        {% else %}
+        <span style="color: #DE627D;">{{ aposta.primeiro_num_apostado }}, {{ aposta.segundo_num_apostado }}, {{ aposta.terceiro_num_apostado }} - {{ sorteio.bixo_sorteado }}</span>;
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+
+    <div>
+        <h4 id="quadra">Quadra:</h4>
+        <table class="table table-info">
+            <tr class="border border-dark">
+                
+                <th class="border border-dark">Sorteio Nº</th>
+                <th>Bichos apostados</th>
+                <th class="border border-dark">Bicho sorteado</th>
+                <th class="border border-dark">Ganhou/Perdeu</th>
+                <th scope="col">Valor apostado</th>
+                <th class="border border-dark">Valor ganhado</th>
+
+            </tr>
+            {% for aposta in apostas_quadra_list %}
+                {% for sorteio in sorteios_list %}
+
+            {% if aposta.primeiro_num_apostado == sorteio.bixo_sorteado or aposta.segundo_num_apostado == sorteio.bixo_sorteado or aposta.terceiro_num_apostado == sorteio.bixo_sorteado or aposta.quarto_num_apostado == sorteio.bixo_sorteado %}
+            <tr class="border border-dark">
+                <td class="border border-dark" style="background-color: #DE627D;">{{ sorteio.sorteio_do_dia }}</td>
+                <td class="border border-dark" style="background-color: #DE627D;">{{ aposta.primeiro_num_apostado }}, {{ aposta.segundo_num_apostado }}, {{ aposta.terceiro_num_apostado }}, {{ aposta.quarto_num_apostado }}</td>
+                <td class="border border-dark" style="background-color: #DE627D;">{{ sorteio.bixo_sorteado }}</td>
+                <td class="border border-dark" style="background-color: #DE627D;">Ganhou</td>
+                <td class="border border-dark" style="background-color: #DE627D;">R$ {{ aposta.valor_apostado }}</td>
+                <td class="border border-dark" style="background-color: #DE627D;">R$ {{ aposta.valor_apostado | mul:12 }}</td>
+
+                {% else %}
+            <tr class="border border-dark">
+                <td class="border border-dark">{{ sorteio.sorteio_do_dia }}</td>
+                <td class="border border-dark">{{ aposta.primeiro_num_apostado }}, {{ aposta.segundo_num_apostado }}, {{ aposta.terceiro_num_apostado }}, {{ aposta.quarto_num_apostado }}</td>
+                <td class="border border-dark">{{ sorteio.bixo_sorteado }}</td>
+                <td class="border border-dark">Perdeu</td>
+                <td class="border border-dark">R$ {{ aposta.valor_apostado }}</td>
+                <td class="border border-dark">R$ 0.00</td>
+                {% endif %}
+
+                {% empty %}
+                <div class="mt-3">
+                    <img src="{% static 'img/cobrinha.png' %}" width="35" alt="">
+                    <span class="mt-2" style="color: #DE627D;">Sua aposta foi registrada, porém ainda não foram feitos os sorteios. Aguarde um tempinho.</span>
+                </div>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% for aposta in apostas_quadra_list %}
+        {% empty %}
+        <div class="mb-3">
+            <img src="{% static 'img/cobrinha.png' %}" width="35" alt="">
+            <span style="color: #DE627D;">Você não apostou na categoria quadra hoje.</span>
+        </div>
+        {% endfor %}
+        {% for aposta in apostas_quadra_list %}
+        {% for sorteio in sorteios_list %}
+
+        {% if aposta.primeiro_num_apostado == sorteio.bixo_sorteado or aposta.segundo_num_apostado == sorteio.bixo_sorteado or aposta.terceiro_num_apostado == sorteio.bixo_sorteado or aposta.quarto_num_apostado == sorteio.bixo_sorteado %}
+        <span style="color: #85de62;">{{ aposta.primeiro_num_apostado }}, {{ aposta.segundo_num_apostado }}, {{ aposta.terceiro_num_apostado }}, {{ aposta.quarto_num_apostado }} - {{ sorteio.bixo_sorteado }}</span>;
+        {% else %}
+        <span style="color: #DE627D;">{{ aposta.primeiro_num_apostado }}, {{ aposta.segundo_num_apostado }}, {{ aposta.terceiro_num_apostado }}, {{ aposta.quarto_num_apostado }} - {{ sorteio.bixo_sorteado }}</span>;
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+
+    <div>
+        <h4 id="quina">Quina:</h4>
+        <table class="table table-primary">
+            <tr class="border border-dark">
+                
+                <th class="border border-dark">Sorteio Nº</th>
+                <th>Bichos apostados</th>
+                <th class="border border-dark">Bicho sorteado</th>
+                <th class="border border-dark">Ganhou/Perdeu</th>
+                <th scope="col">Valor apostado</th>
+                <th class="border border-dark">Valor ganhado</th>
+
+            </tr>
+            {% for aposta in apostas_quina_list %}
+                {% for sorteio in sorteios_list %}
+
+
+            {% if aposta.primeiro_num_apostado == sorteio.bixo_sorteado or aposta.segundo_num_apostado == sorteio.bixo_sorteado or aposta.terceiro_num_apostado == sorteio.bixo_sorteado or aposta.quarto_num_apostado == sorteio.bixo_sorteado or aposta.quinto_num_apostado == sorteio.bixo_sorteado %}
+            <tr class="border">
+                <td class="border border-dark" style="background-color: #DE627D;">{{ sorteio.sorteio_do_dia }}</td>
+                <td class="border border-dark" style="background-color: #DE627D;">{{ aposta.primeiro_num_apostado }}, {{ aposta.segundo_num_apostado }}, {{ aposta.terceiro_num_apostado }}, {{ aposta.quarto_num_apostado }}, {{ aposta.quinto_num_apostado }}</td>
+
+                <td class="border border-dark" style="background-color: #DE627D;">{{ sorteio.bixo_sorteado }}</td>
+                <td class="border border-dark" style="background-color: #DE627D;">Ganhou</td>
+                <td class="border border-dark" style="background-color: #DE627D;">R$ {{ aposta.valor_apostado }}</td>
+                <td class="border border-dark" style="background-color: #DE627D;">R$ {{ aposta.valor_apostado | mul:12 }}</td>
+
+                {% else %}
+            <tr class="border">
+                <td class="border border-dark">{{ sorteio.sorteio_do_dia }}</td>
+                <td class="border border-dark">{{ aposta.primeiro_num_apostado }}, {{ aposta.segundo_num_apostado }}, {{ aposta.terceiro_num_apostado }}, {{ aposta.quarto_num_apostado }}, {{ aposta.quinto_num_apostado }}</td>
+
+                <td class="border border-dark">{{ sorteio.bixo_sorteado }}</td>
+                <td class="border border-dark">Perdeu</td>
+                <td class="border border-dark">R$ {{ aposta.valor_apostado }}</td>
+                <td class="border border-dark">R$ 0.00</td>
+                {% endif %}
+
+                {% empty %}
+                <div class="mt-3">
+                    <img src="{% static 'img/cobrinha.png' %}" width="35" alt="">
+                    <span class="mt-2" style="color: #DE627D;">Sua aposta foi registrada, porém ainda não foram feitos os sorteios. Aguarde um tempinho.</span>
+                </div>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% for aposta in apostas_quina_list %}
+        {% empty %}
+        <div class="mb-3">
+            <img src="{% static 'img/cobrinha.png' %}" width="35" alt="">
+            <span style="color: #DE627D;">Você não apostou na categoria quina hoje.</span>
+        </div>
+        {% endfor %}
+        {% for aposta in apostas_quina_list %}
+        {% for sorteio in sorteios_list %}
+
+        {% if aposta.primeiro_num_apostado == sorteio.bixo_sorteado or aposta.segundo_num_apostado == sorteio.bixo_sorteado or aposta.terceiro_num_apostado == sorteio.bixo_sorteado or aposta.quarto_num_apostado == sorteio.bixo_sorteado or aposta.quina_num_apostado == sorteio.bixo_sorteado %}
+        <span style="color: #85de62;">{{ aposta.primeiro_num_apostado }}, {{ aposta.segundo_num_apostado }}, {{ aposta.terceiro_num_apostado }}, {{ aposta.quarto_num_apostado }}, {{ aposta.quinto_num_apostado }} - {{ sorteio.bixo_sorteado }}</span>;
+        {% else %}
+        <span style="color: #DE627D;">{{ aposta.primeiro_num_apostado }}, {{ aposta.segundo_num_apostado }}, {{ aposta.terceiro_num_apostado }}, {{ aposta.quarto_num_apostado }}, {{ aposta.quinto_num_apostado }} - {{ sorteio.bixo_sorteado }}</span>;
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
